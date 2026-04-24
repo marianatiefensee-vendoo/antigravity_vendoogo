@@ -1,0 +1,326 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --primary:#653CC9;--on-primary:#fff;
+  --secondary:#64539B;
+  --outline:#7A7486;--outline-variant:#CBC3D7;
+  --surface:#FDF7FF;--on-surface:#1D1A24;
+  --surface-container:#F2EBF9;--surface-lowest:#fff;
+  --surface-dim:#DED7E5;--cr:12px;
+}
+.wrap{display:flex;flex-direction:column;align-items:center;gap:14px;padding:16px 0;font-family:'Lexend',sans-serif}
+.snav{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:0 8px}
+.snav-btn{padding:5px 12px;border-radius:20px;border:1px solid var(--outline-variant);background:transparent;color:var(--outline);font-size:11px;font-weight:500;cursor:pointer;font-family:'Lexend',sans-serif;transition:all .2s}
+.snav-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.phones{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;align-items:flex-start}
+.phone{width:300px;background:var(--surface-lowest);border-radius:44px;border:8px solid #1a1a2a;overflow:hidden;flex-shrink:0}
+.nbar{background:#1a1a2a;display:flex;justify-content:center;padding:8px 0 6px}
+.npill{width:88px;height:24px;background:#000;border-radius:0 0 15px 15px}
+.sbar{display:flex;justify-content:space-between;align-items:center;padding:6px 16px 4px;background:var(--surface-lowest)}
+.screen{background:var(--surface);min-height:580px;display:flex;flex-direction:column}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px 8px;background:var(--surface-lowest)}
+.pips{display:flex;justify-content:center;gap:4px;padding:6px 16px 4px;background:var(--surface-lowest)}
+.pip{height:3px;border-radius:2px;background:var(--surface-dim)}
+.pip.on{background:var(--primary)}
+.stitle{font-size:24px;font-weight:400;color:var(--on-surface);line-height:32px;padding:4px 16px 12px;background:var(--surface-lowest)}
+.slabel{font-size:11px;font-weight:500;color:var(--secondary);padding:0 16px 8px;letter-spacing:.5px;text-transform:uppercase}
+.fcard{background:var(--surface-lowest);border-radius:var(--cr);padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;border:1px solid var(--outline-variant)}
+.flbl{font-size:11px;font-weight:500;color:var(--secondary);margin-bottom:2px;letter-spacing:.4px}
+.fval{font-size:14px;color:var(--on-surface)}
+.eico{opacity:.4;flex-shrink:0}
+.btn-p{width:calc(100% - 32px);margin:0 16px;background:var(--primary);color:#fff;border:none;border-radius:var(--cr);padding:14px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Lexend',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-s{width:calc(100% - 32px);margin:8px 16px 0;background:transparent;color:var(--secondary);border:1px solid var(--outline-variant);border-radius:var(--cr);padding:13px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Lexend',sans-serif}
+.btn-g{width:calc(100% - 32px);margin:4px 16px 0;background:transparent;color:var(--outline);border:none;padding:10px;font-size:13px;cursor:pointer;font-family:'Lexend',sans-serif}
+.btn-d{width:calc(100% - 32px);margin:0 16px;background:var(--surface-dim);color:var(--outline);border:none;border-radius:var(--cr);padding:14px;font-size:14px;font-weight:500;cursor:default;font-family:'Lexend',sans-serif}
+.bsticky{padding:12px 0 20px;background:var(--surface-lowest);border-top:1px solid var(--outline-variant)}
+.cam{background:#111;height:210px;position:relative;display:flex;align-items:center;justify-content:center}
+.camf{position:absolute;inset:16px;border:2px solid rgba(255,255,255,.5);border-radius:8px}
+.shut{width:48px;height:48px;border-radius:50%;background:#fff;border:3px solid rgba(255,255,255,.3);position:absolute;bottom:12px;left:50%;transform:translateX(-50%)}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;padding:10px 16px;background:var(--surface)}
+.slot{aspect-ratio:1;border-radius:8px;border:1px dashed var(--outline-variant);display:flex;align-items:center;justify-content:center;background:var(--surface-container)}
+.slot.f{background:var(--surface-dim);border:none}
+.aihero{text-align:center;padding:36px 24px 20px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.spin{width:32px;height:32px;border-radius:50%;border:3px solid var(--surface-container);border-top:3px solid var(--primary);animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.icard{background:var(--surface-container);border-radius:var(--cr);padding:12px 14px;border:1px solid var(--outline-variant);width:100%}
+.pbar{height:3px;background:var(--surface-container);border-radius:2px;margin-top:14px;overflow:hidden;width:100%}
+.pfill{height:100%;background:var(--primary);border-radius:2px}
+.priceh{padding:48px 16px 28px;text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--surface-lowest)}
+.mrow{background:var(--surface-lowest);border-radius:var(--cr);padding:12px 14px;margin:0 16px 8px;display:flex;align-items:center;gap:10px;border:1px solid var(--outline-variant)}
+.mrow.sel{border:1.5px solid var(--primary);background:var(--surface-container)}
+.mlogo{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mcon{background:var(--surface-container);color:var(--secondary);border:1px solid var(--outline-variant);border-radius:8px;padding:5px 12px;font-size:12px;font-weight:500;cursor:pointer;font-family:'Lexend',sans-serif}
+.ambadge{background:#FFF3CD;color:#856404;border-radius:6px;padding:2px 7px;font-size:10px;font-weight:600}
+.pcrd{background:var(--surface-lowest);border-radius:var(--cr);padding:12px;margin:0 16px 10px;display:flex;gap:10px;border:1px solid var(--outline-variant)}
+.suc{width:72px;height:72px;border-radius:50%;background:#EAF3DE;margin-bottom:16px;display:flex;align-items:center;justify-content:center}
+.conf-chip{display:inline-flex;align-items:center;gap:5px;background:var(--surface-container);border:1px solid var(--outline-variant);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:500;color:var(--secondary)}
+</style>
+
+<div class="wrap">
+<h2 class="sr-only">Vendoo Go — smart listing v7</h2>
+<div class="snav" id="snav"></div>
+<div class="phones">
+  <div class="phone">
+    <div class="nbar"><div class="npill"></div></div>
+    <div class="sbar"><span style="font-size:12px;font-weight:500;color:var(--on-surface);font-family:'Lexend',sans-serif" id="tL">11:48</span><span style="font-size:11px;color:var(--on-surface)">●●● ⌘ 27</span></div>
+    <div class="screen" id="sL"></div>
+  </div>
+  <div class="phone" id="pR">
+    <div class="nbar"><div class="npill"></div></div>
+    <div class="sbar"><span style="font-size:12px;font-weight:500;color:var(--on-surface);font-family:'Lexend',sans-serif" id="tR">11:49</span><span style="font-size:11px;color:var(--on-surface)">●●● ⌘ 27</span></div>
+    <div class="screen" id="sR"></div>
+  </div>
+</div>
+</div>
+
+<script>
+const BK=`<svg width="10" height="16" viewBox="0 0 10 16" fill="none"><path d="M8 2L2 8L8 14" stroke="#1D1A24" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+const CL=`<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="#1D1A24" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+const ED=`<svg class="eico" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M11 2l3 3-8 8H3v-3l8-8z" stroke="#7A7486" stroke-width="1.2"/></svg>`;
+const CV=`<svg width="8" height="13" viewBox="0 0 8 13" fill="none"><path d="M2 2l5 4.5L2 11" stroke="#CBC3D7" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+const MO=`<svg width="26" height="26" viewBox="0 0 26 26" fill="none"><ellipse cx="13" cy="13" rx="9" ry="11" stroke="#7A7486" stroke-width="1.4"/><line x1="13" y1="4" x2="13" y2="10" stroke="#7A7486" stroke-width="1.4"/><line x1="4" y1="13" x2="22" y2="13" stroke="#7A7486" stroke-width="1.4"/></svg>`;
+const IN=`<svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;margin-top:1px"><circle cx="7.5" cy="7.5" r="6.5" stroke="#653CC9" stroke-width="1.3"/><path d="M7.5 5v4M7.5 10.5v.3" stroke="#653CC9" stroke-width="1.3" stroke-linecap="round"/></svg>`;
+const AI_ICO=`<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C8 1.5 9 4 11.5 4C9 4 11.5 4 11.5 6.5C11.5 4 14 4 14 4C14 4 11.5 4 11.5 1.5C11.5 4 9 4 8 1.5Z" fill="white"/><path d="M3 7C3 7 4 9 6 9C4 9 6 9 6 11C6 9 8 9 8 9C8 9 6 9 6 7C6 9 4 9 3 7Z" fill="white"/><circle cx="4" cy="4" r="1" fill="white" opacity=".6"/><circle cx="12" cy="12" r="1" fill="white" opacity=".6"/></svg>`;
+const CHK=`<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#653CC9" stroke-width="1.4"/><path d="M5.5 9l2.5 2.5 4.5-5" stroke="#653CC9" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const PLUS=`<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="#CBC3D7" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+
+function pips(n,a){return `<div class="pips">${Array.from({length:n},(_,i)=>`<div class="pip${i<=a?' on':''}" style="width:${Math.floor(252/n)}px"></div>`).join('')}</div>`;}
+function nav(s,n){return `<div class="topbar"><div>${BK}</div><div>${CL}</div></div>${pips(n,s)}`;}
+
+const P=[
+{label:"P1 — Camera",tL:"11:48",tR:"11:48",
+left:`<div style="background:#fff;flex:1;display:flex;flex-direction:column">
+  ${nav(0,6)}
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 20px">
+    <div style="display:flex;margin-bottom:24px">
+      <div style="width:72px;height:72px;border-radius:18px;background:var(--surface-container);display:flex;align-items:center;justify-content:center">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="4" y="9" width="28" height="20" rx="5" stroke="var(--primary)" stroke-width="1.8"/><circle cx="18" cy="19" r="5.5" stroke="var(--primary)" stroke-width="1.8"/><rect x="13" y="7" width="10" height="4" rx="2" fill="var(--primary)"/></svg>
+      </div>
+      <div style="width:64px;height:64px;border-radius:16px;background:#FEE8F0;display:flex;align-items:center;justify-content:center;margin-left:-12px;margin-top:14px">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect x="3" y="9" width="24" height="16" rx="4" stroke="#D4537E" stroke-width="1.8"/><path d="M11 9V7a4 4 0 018 0v2" stroke="#D4537E" stroke-width="1.8"/></svg>
+      </div>
+    </div>
+    <div style="font-size:20px;font-weight:500;color:var(--on-surface);text-align:center;margin-bottom:16px;line-height:1.4">Allow Vendoo Go to access your camera</div>
+    <div style="width:100%;background:var(--surface-container);border-radius:var(--cr);padding:14px;border:1px solid var(--outline-variant)">
+      <div style="font-size:13px;color:var(--on-surface);line-height:1.9">
+        <div style="display:flex;gap:8px;margin-bottom:5px"><span style="color:var(--primary);font-weight:500">·</span><span>List your item in under 60 seconds</span></div>
+        <div style="display:flex;gap:8px;margin-bottom:5px"><span style="color:var(--primary);font-weight:500">·</span><span>We'll automatically suggest the best cover photo for your listing</span></div>
+        <div style="display:flex;gap:8px"><span style="color:var(--primary);font-weight:500">·</span><span>You can change your settings anytime</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="bsticky">
+    <button class="btn-p">Continue to smart listing ${AI_ICO}</button>
+    <button class="btn-g">Back</button>
+  </div>
+</div>`,
+right:`<div style="flex:1;display:flex;flex-direction:column;background:var(--surface)">
+  <div class="cam">
+    <div class="camf"></div>
+    <div class="shut"></div>
+    <div style="position:absolute;bottom:14px;right:14px;width:32px;height:32px;background:rgba(255,255,255,.12);border-radius:6px;display:flex;align-items:center;justify-content:center">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="3" stroke="rgba(255,255,255,.65)" stroke-width="1.2"/><circle cx="5" cy="6" r="1.5" fill="rgba(255,255,255,.65)"/><path d="M1 11l4-4 3 3 2-2 5 5" stroke="rgba(255,255,255,.65)" stroke-width="1.2" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+  <div class="pgrid">
+    <div class="slot f"></div>
+    <div class="slot f"></div>
+    ${[0,0,0,0,0,0].map(()=>`<div class="slot">${PLUS}</div>`).join('')}
+  </div>
+  <div style="flex:1;background:var(--surface)"></div>
+  <div class="bsticky">
+    <button class="btn-p">Next ${AI_ICO}</button>
+  </div>
+</div>`},
+
+{label:"P2 — AI analysis",tL:"11:49",tR:"11:49",
+left:`<div style="flex:1;display:flex;flex-direction:column;background:var(--surface-lowest)">
+  ${nav(1,6)}
+  <div class="aihero">
+    <div class="spin"></div>
+    <div style="font-size:16px;font-weight:500;color:var(--on-surface);margin:14px 0 5px;line-height:1.4">Analyzing your photos...</div>
+    <div style="font-size:13px;color:var(--outline)">Reading 2 images · extracting details</div>
+    <div class="pbar"><div class="pfill" style="width:55%"></div></div>
+    <div class="icard" style="margin-top:16px">
+      <div style="display:flex;align-items:flex-start;gap:8px">
+        ${IN}
+        <div>
+          <div style="font-size:12px;font-weight:500;color:var(--secondary);margin-bottom:4px">We're organizing your photos</div>
+          <div style="font-size:12px;color:var(--on-surface);line-height:1.6">We'll automatically identify the best cover image and place it first so your listing always leads with the strongest photo.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`,
+right:`<div style="flex:1;display:flex;flex-direction:column;background:var(--surface)">
+  ${nav(1,6)}
+  <div class="stitle">Smart listing preview</div>
+  <div style="background:var(--surface-lowest);border-radius:var(--cr);padding:12px;display:flex;gap:10px;margin:0 16px 14px;border:1px solid var(--outline-variant)">
+    <div style="width:52px;height:52px;border-radius:8px;background:var(--surface-dim);flex-shrink:0;display:flex;align-items:center;justify-content:center">${MO}</div>
+    <div>
+      <div style="font-size:13px;font-weight:500;color:var(--on-surface);line-height:1.4;margin-bottom:3px">Electronics - Computer Accessories - Mice &amp; Trackballs</div>
+      <div style="font-size:11px;color:var(--outline)">#wireless mouse, #bluetooth mouse, #computer mouse</div>
+    </div>
+  </div>
+  <div style="padding:0 16px 14px;display:flex;align-items:center;justify-content:space-between">
+    <span class="slabel" style="padding:0">AI confidence</span>
+    <span class="conf-chip">${CHK} Overall 91%</span>
+  </div>
+  <div class="slabel">Product details</div>
+  <div style="padding:0 16px">
+    <div class="fcard"><div style="flex:1"><div class="flbl">Brand</div><div class="fval">Apple</div></div>${ED}</div>
+    <div class="fcard"><div style="flex:1"><div class="flbl">Condition</div><div class="fval">Pre-Owned - Good</div></div>${ED}</div>
+    <div class="fcard"><div style="flex:1"><div class="flbl">Model</div><div class="fval">Magic Mouse</div></div>${ED}</div>
+  </div>
+  <div style="flex:1"></div>
+  <div class="bsticky"><button class="btn-p">Next</button></div>
+</div>`},
+
+{label:"P3 — Pricing",tL:"11:50",tR:null,
+left:`<div style="flex:1;display:flex;flex-direction:column;background:var(--surface-lowest)">
+  ${nav(2,6)}
+  <div class="stitle">Pricing</div>
+  <div class="priceh">
+    <div style="font-size:48px;font-weight:300;color:var(--on-surface);display:inline-flex;align-items:center;gap:8px;line-height:1">
+      <span style="font-size:24px;color:var(--outline);font-weight:400;align-self:flex-start;margin-top:10px">$</span>
+      <span>40</span>
+      <svg class="eico" width="20" height="20" viewBox="0 0 20 20" fill="none" style="opacity:.3;align-self:flex-start;margin-top:10px"><path d="M14 3l3 3-9 9H5v-3l9-9z" stroke="#7A7486" stroke-width="1.4"/></svg>
+    </div>
+  </div>
+  <div style="flex:1"></div>
+  <div class="bsticky">
+    <button class="btn-p">Next</button>
+    <button class="btn-s">Save as draft</button>
+  </div>
+</div>`,right:null},
+
+{label:"P4 — Title &amp; desc",tL:"11:50",tR:"11:51",
+left:`<div style="flex:1;display:flex;flex-direction:column;background:var(--surface-lowest)">
+  ${nav(3,6)}
+  <div class="aihero">
+    <div class="spin"></div>
+    <div style="font-size:16px;font-weight:500;color:var(--on-surface);margin:14px 0 5px">Generating your listing...</div>
+    <div style="font-size:13px;color:var(--outline)">Writing title &amp; description</div>
+    <div class="pbar"><div class="pfill" style="width:75%"></div></div>
+    <div class="icard" style="margin-top:16px;text-align:left">
+      <div style="display:flex;align-items:flex-start;gap:8px">
+        ${IN}
+        <div style="font-size:12px;color:var(--on-surface);line-height:1.7">Using <span style="font-weight:500;color:var(--secondary)">category, brand, model, condition, color</span> and price to craft the best title and description for each marketplace.</div>
+      </div>
+    </div>
+  </div>
+</div>`,
+right:`<div style="flex:1;display:flex;flex-direction:column;background:var(--surface)">
+  ${nav(3,6)}
+  <div class="stitle">Listing ready</div>
+  <div style="padding:0 16px 14px;display:flex;align-items:center;justify-content:space-between">
+    <span class="slabel" style="padding:0">AI confidence</span>
+    <span class="conf-chip">${CHK} Overall 87%</span>
+  </div>
+  <div class="slabel">Generated title</div>
+  <div style="padding:0 16px 4px">
+    <div class="fcard" style="align-items:flex-start;gap:8px">
+      <div style="font-size:14px;color:var(--on-surface);line-height:1.55;flex:1">Apple Magic Mouse Unisex Wireless Bluetooth Modern Plastic White Gray</div>${ED}
+    </div>
+  </div>
+  <div class="slabel" style="padding-top:8px">Description</div>
+  <div style="padding:0 16px">
+    <div class="fcard" style="align-items:flex-start;gap:8px">
+      <div style="font-size:12px;color:var(--outline);line-height:1.6;flex:1">This Apple Magic Mouse is a versatile wireless input device ideal for everyday use with Mac computers. Its sleek design complements modern and minimalist set...</div>${ED}
+    </div>
+  </div>
+  <div style="flex:1"></div>
+  <div class="bsticky">
+    <button class="btn-p">Select marketplaces</button>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px 16px 0">
+      <button style="background:transparent;color:var(--secondary);border:1px solid var(--outline-variant);border-radius:var(--cr);padding:11px 8px;font-size:12px;font-weight:500;cursor:pointer;font-family:'Lexend',sans-serif;line-height:1.4;text-align:center">Save draft<br><span style="font-size:10px;color:var(--outline);font-weight:400">+ new listing</span></button>
+      <button style="background:transparent;color:var(--secondary);border:1px solid var(--outline-variant);border-radius:var(--cr);padding:11px 8px;font-size:12px;font-weight:500;cursor:pointer;font-family:'Lexend',sans-serif;line-height:1.4;text-align:center">Save draft<br><span style="font-size:10px;color:var(--outline);font-weight:400">→ inventory</span></button>
+    </div>
+  </div>
+</div>`},
+
+{label:"P5 — Publish",tL:"11:52",tR:"11:54",
+left:`<div style="flex:1;display:flex;flex-direction:column;background:var(--surface)">
+  ${nav(4,6)}
+  <div class="stitle" style="padding:4px 16px 10px">Publish your listing</div>
+  <div class="pcrd">
+    <div style="width:56px;height:56px;border-radius:8px;background:var(--surface-dim);flex-shrink:0;display:flex;align-items:center;justify-content:center">${MO}</div>
+    <div style="flex:1">
+      <div style="font-size:12px;font-weight:500;color:var(--on-surface);line-height:1.4;margin-bottom:2px">Apple Magic Mouse Unisex Wireless Bluetooth Modern Plastic White Gray</div>
+      <div style="font-size:11px;color:var(--outline);margin-bottom:4px">Apple · Pre-Owned - Good</div>
+      <div style="font-size:11px;color:var(--on-surface);line-height:1.5;margin-bottom:6px">This Apple Magic Mouse is a versatile wireless input device ideal for everyday use with Mac computers...</div>
+      <div style="font-size:18px;font-weight:500;color:var(--on-surface)">$40</div>
+    </div>
+  </div>
+  <div style="text-align:right;padding:0 16px 12px"><span style="font-size:12px;color:var(--primary);cursor:pointer">Details ›</span></div>
+  <div style="font-size:13px;font-weight:500;color:var(--on-surface);padding:0 16px 10px">Select your marketplaces</div>
+  <div class="mrow"><div class="mlogo" style="background:#EEF0FF"><span style="font-size:18px;font-weight:700;color:#5B6BE8">M</span></div><span style="flex:1;font-size:14px;color:var(--on-surface);font-weight:500">Mercari</span><button class="mcon">Connect</button></div>
+  <div class="mrow"><div class="mlogo" style="background:#FFF3E8"><span style="font-size:10px;font-weight:700;color:#E05C00">eBay</span></div><span style="flex:1;font-size:14px;color:var(--on-surface);font-weight:500">eBay</span><button class="mcon">Connect</button></div>
+  <div style="flex:1"></div>
+  <div class="bsticky"><button class="btn-d">Publish</button></div>
+</div>`,
+right:`<div style="flex:1;display:flex;flex-direction:column;background:var(--surface)">
+  ${nav(4,6)}
+  <div class="stitle" style="padding:4px 16px 10px">Publish your listing</div>
+  <div class="pcrd">
+    <div style="width:56px;height:56px;border-radius:8px;background:var(--surface-dim);flex-shrink:0;display:flex;align-items:center;justify-content:center">${MO}</div>
+    <div style="flex:1">
+      <div style="font-size:12px;font-weight:500;color:var(--on-surface);line-height:1.4;margin-bottom:2px">Apple Magic Mouse Unisex Wireless Bluetooth Modern Plastic White Gray</div>
+      <div style="font-size:11px;color:var(--outline);margin-bottom:4px">Apple · Pre-Owned - Good</div>
+      <div style="font-size:11px;color:var(--on-surface);line-height:1.5;margin-bottom:6px">This Apple Magic Mouse is a versatile wireless input device ideal for everyday use with Mac computers...</div>
+      <div style="font-size:18px;font-weight:500;color:var(--on-surface)">$40</div>
+    </div>
+  </div>
+  <div style="text-align:right;padding:0 16px 12px"><span style="font-size:12px;color:var(--primary);cursor:pointer">Details ›</span></div>
+  <div style="font-size:13px;font-weight:500;color:var(--on-surface);padding:0 16px 10px">Select your marketplaces</div>
+  <div class="mrow sel"><div class="mlogo" style="background:#EEF0FF"><span style="font-size:18px;font-weight:700;color:#5B6BE8">M</span></div><span style="flex:1;font-size:14px;color:var(--on-surface);font-weight:500">Mercari</span>${CHK}</div>
+  <div class="mrow"><div class="mlogo" style="background:#FFF3E8"><span style="font-size:10px;font-weight:700;color:#E05C00">eBay</span></div><div style="flex:1"><div style="font-size:14px;color:var(--on-surface);font-weight:500">eBay</div><span class="ambadge">⚠ Action required</span></div>${CV}</div>
+  <div style="flex:1"></div>
+  <div class="bsticky"><button class="btn-p">Publish</button></div>
+</div>`},
+
+{label:"P6 — Published",tL:"11:55",tR:null,
+left:`<div style="flex:1;display:flex;flex-direction:column;background:var(--surface-lowest)">
+  ${nav(5,6)}
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center">
+    <div class="suc"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M7 16l6 6 12-12" stroke="#3b6d11" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div style="font-size:24px;font-weight:400;color:var(--on-surface);margin-bottom:8px">Published!</div>
+    <div style="font-size:14px;color:var(--outline);margin-bottom:28px">Your item is live on Mercari</div>
+    <div style="width:100%;background:var(--surface-container);border-radius:var(--cr);padding:14px;text-align:left;margin-bottom:12px;border:1px solid var(--outline-variant)">
+      <div style="font-size:11px;font-weight:500;color:var(--outline);margin-bottom:3px;letter-spacing:.5px">LISTING ID</div>
+      <div style="font-size:12px;color:var(--on-surface);font-family:monospace">lst_4b2c9d3f...</div>
+    </div>
+    <div style="width:100%;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="background:var(--surface-container);border-radius:var(--cr);padding:12px;text-align:center;border:1px solid var(--outline-variant)">
+        <div style="font-size:11px;font-weight:500;color:var(--outline);margin-bottom:5px;letter-spacing:.3px">Mercari</div>
+        <span style="background:#EAF3DE;color:#3b6d11;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:500">Live ✓</span>
+      </div>
+      <div style="background:var(--surface-container);border-radius:var(--cr);padding:12px;text-align:center;border:1px solid var(--outline-variant)">
+        <div style="font-size:11px;font-weight:500;color:var(--outline);margin-bottom:5px;letter-spacing:.3px">Views</div>
+        <div style="font-size:22px;font-weight:300;color:var(--on-surface)">0</div>
+      </div>
+    </div>
+  </div>
+  <div class="bsticky">
+    <button class="btn-p">List another item</button>
+    <button class="btn-g">View my listings</button>
+  </div>
+</div>`,right:null}
+];
+
+let cur=0;
+function render(){
+  const p=P[cur];
+  document.getElementById('sL').innerHTML=p.left;
+  document.getElementById('tL').textContent=p.tL;
+  const pr=document.getElementById('pR');
+  if(p.right){document.getElementById('sR').innerHTML=p.right;document.getElementById('tR').textContent=p.tR;pr.style.visibility='visible';}
+  else{document.getElementById('sR').innerHTML='';pr.style.visibility='hidden';}
+  document.querySelectorAll('.snav-btn').forEach((b,i)=>b.classList.toggle('active',i===cur));
+}
+const nav2=document.getElementById('snav');
+P.forEach((p,i)=>{const b=document.createElement('button');b.className='snav-btn';b.textContent=`P${i+1}`;b.onclick=()=>{cur=i;render();};nav2.appendChild(b);});
+render();
+</script>
